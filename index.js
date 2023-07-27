@@ -7,7 +7,7 @@ const app = express()
 mongoose.connect('mongodb://127.0.0.1:27017/ghulamullah')
 app.use('/user', userRoute)
 app.use('/store', storeRoute)
-app.use('/category',categoryRoute)
+app.use('/category',categoryRoute) 
 app.listen(3, function () {
     console.log("Listening on Port 3")
 })
