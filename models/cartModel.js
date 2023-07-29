@@ -1,8 +1,20 @@
 const mongoose = require('mongoose')
 
 
-const store = mongoose.Schema({
+const Cart_Model = mongoose.Schema({
     vender_id:{
+        type:String,
+        required:true
+    },
+    product_id:{
+        type:String,
+        required:true
+    },
+    store_id:{
+        type:String,
+        required:true
+    },
+    price:{
         type:String,
         required:true
     },
@@ -10,27 +22,19 @@ const store = mongoose.Schema({
         type:String,
         required:true
     },
-    business_email:{
+    discount:{
         type:String,
         required:true
     },
-    logo:{
-        type:String,
-        required:true
-    },
-    pin:{
-        type:String,
-        required:true
-    },
-    location:{
-       type: {type:String,
-        required:true},
-        coordinates:[]
-    },
-    address:{
-        type:String,
-        required:true
-    }
+   image:{
+    type:String,
+    required:true
+   },
+   quantity:{
+    type:Number,
+    default:1
+   }
 })
-store.index({location:"2dsphere"})
-module.exports = mongoose.model("Store",store)
+
+// Exports
+module.exports = mongoose.model("Cart",Cart_Model)
