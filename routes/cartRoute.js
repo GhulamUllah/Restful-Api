@@ -10,6 +10,9 @@ cart_route.use(bodyParser.urlencoded({extended:true}))
 
 cart_route.get('/',auth,cartController.getCart)
 cart_route.post('/add-to-cart/:id',auth,cartController.addtocart)
+cart_route.post('/cartincrement/:id',auth,cartController.Cartincrement)
+cart_route.post('/cartdecrement/:id',auth,cartController.Cartdecrement)
+cart_route.post('/delete-from-cart/:id',auth,cartController.deleteCart)
 
 
 // Export Section

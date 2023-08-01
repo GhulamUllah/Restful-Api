@@ -30,10 +30,11 @@ const Cart_Model = mongoose.Schema({
     type:String,
     required:true
    },
-   quantity:{
+  quantity:{
     type:Number,
+    required:true,
     default:1
-   }
+  }
 })
 
 // Exports
