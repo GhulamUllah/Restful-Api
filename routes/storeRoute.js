@@ -30,6 +30,7 @@ store_routes.post('/add-store',auth,upload.single('logo'),storeController.create
 store_routes.get('/',auth,storeController.get_store)
 store_routes.delete('/delete-store/:id',auth,storeController.delete_store)
 store_routes.patch('/update-store/:id',auth,storeController.update_store)
+store_routes.get('/nearest-store',auth,storeController.near_store)
 
 
 

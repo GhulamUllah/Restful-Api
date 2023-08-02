@@ -126,11 +126,45 @@ const Cartdecrement = async (req, res) => {
 }
 
 
+// Cart Pagination logic is here just for practice
+const pagination=async(req,res)=>{
+try {
+    const {page,sort}= req.body
+    let skip;
+    let customsort
+    if(page <= 1){
+        skip=0
+    }
+    else{
+        skip=(page - 1)*5
+    }
+    if(sort){
+        if(sort === 'name'){
+            customsort={
+                name:1
+            }
+        }
+        else if(sort ==='_id'){
+            customsort={
+                _id:1
+            }
+        }
+    }
+    const data = await Cart.find().sort(customsort).skip(skip).limit(5)
+    res.status(200).send({success:true,message:"Cart Paginate",data:data})
+} catch (error) {
+    res.status(400).send({ success: false, message: error.message })
+    
+}
+}
+
+
 //Export Section
 module.exports = {
     getCart,
     addtocart,
     deleteCart,
     Cartincrement,
-    Cartdecrement
+    Cartdecrement,
+    pagination
 }

@@ -13,6 +13,7 @@ cart_route.post('/add-to-cart/:id',auth,cartController.addtocart)
 cart_route.post('/cartincrement/:id',auth,cartController.Cartincrement)
 cart_route.post('/cartdecrement/:id',auth,cartController.Cartdecrement)
 cart_route.post('/delete-from-cart/:id',auth,cartController.deleteCart)
+cart_route.get('/paginate',auth,cartController.pagination)
 
 
 // Export Section

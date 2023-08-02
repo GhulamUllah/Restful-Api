@@ -107,6 +107,33 @@ const update_store = async(req,res)=>{
     }
 }
 
+// Finding the nearest Store Logic is here 
+const near_store = async(req,res)=>{
+
+
+        try {
+            const {latitude,longitude,maxDistance}=req.body
+            let store_data = await Store.aggregate([
+                {
+                    $geoNear:{
+                        near:{
+                            type:"Point",
+                            coordinates:[parseFloat(longitude),parseFloat(latitude)]
+                        },
+                        spherical:true,
+                        includeLocs:"dist.location",
+                        maxDistance:maxDistance*1906,
+                        distanceField:"dist.calculated"
+                }
+            }
+            ])
+
+            res.status(200).send({success:true,message:"Nearest Stores",data:store_data})
+        } catch (error) {
+            res.status(400).send({success:false,message:error.message})
+        }
+}
+
 
 
 
@@ -114,6 +141,7 @@ module.exports = {
     create_store,
     get_store,
     delete_store,
-    update_store
+    update_store,
+     near_store
 
 }

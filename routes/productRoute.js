@@ -28,6 +28,8 @@ product_route.get('/',productController.getProduct)
 product_route.post('/add-product',auth,upload.array('images'),productController.addProduct)
 product_route.delete('/delete-product/:id',auth,productController.deleteProduct)
 product_route.patch('/update-product/:id',auth,productController.updateProduct)
+product_route.get('/page-product',auth,productController.pagination)
+product_route.get('/search-product',auth,productController.search_product)
 
 
 
